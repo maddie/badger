@@ -166,9 +166,9 @@ func checkAndSetOptions(opt *Options) error {
 			"reduce opt.ValueThreshold or increase opt.MaxTableSize.",
 			opt.ValueThreshold, opt.maxBatchSize)
 	}
-	// ValueLogFileSize should be stricly LESS than 2<<30 otherwise we will
+	// ValueLogFileSize should be strictly LESS than 2<<30 otherwise we will
 	// overflow the uint32 when we mmap it in OpenMemtable.
-	if !(opt.ValueLogFileSize < 2<<30 && opt.ValueLogFileSize >= 1<<20) {
+	if !(opt.ValueLogFileSize < 2<<30) {
 		return ErrValueLogSize
 	}
 
